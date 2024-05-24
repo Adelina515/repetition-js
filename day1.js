@@ -1,13 +1,15 @@
-function makeOrderMessage(orderedQuantity, pricePerDroid, deliveryFee) {
+function filterArray(numbers, value) {
   // Change code below this line
-  const totalPrice = orderedQuantity * pricePerDroid + deliveryFee;
-
-  const message = `You ordered droids worth ${totalPrice} credits. Delivery (${deliveryFee} credits) is included in total price.`;
+  let newArray = [];
+  for (let i = 0; i < numbers.length; i += 1) {
+    console.log(numbers[i]);
+    if (numbers[i] > value) {
+      newArray.push(numbers[i]);
+    }
+  }
+  console.log("new", newArray);
+  return newArray;
 
   // Change code above this line
-  return message;
 }
-
-console.log(makeOrderMessage(2, 100, 50));
-console.log(makeOrderMessage(4, 300, 100));
-console.log(makeOrderMessage(10, 70, 200));
+filterArray([1, 2, 3, 4, 5], 3);
