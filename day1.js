@@ -1,15 +1,30 @@
-function filterArray(numbers, value) {
-  // Change code below this line
-  let newArray = [];
-  for (let i = 0; i < numbers.length; i += 1) {
-    console.log(numbers[i]);
-    if (numbers[i] > value) {
-      newArray.push(numbers[i]);
-    }
+class StringBuilder {
+  constructor(initialValue) {
+    this.initialValue = initialValue;
   }
-  console.log("new", newArray);
-  return newArray;
-
-  // Change code above this line
+  getValue() {
+    return this.initialValue;
+  }
+  padEnd(str) {
+    console.log("str", str);
+    return (this.initialValue += str);
+  }
+  padStart(str) {
+    console.log("str2", str);
+    return (this.initialValue = str + this.initialValue);
+  }
+  padBoth(str) {
+    console.log("str3", str);
+    return (this.initialValue = str + this.initialValue + str);
+  }
 }
-filterArray([1, 2, 3, 4, 5], 3);
+
+// Change code above this line
+const builder = new StringBuilder(".");
+console.log(builder.getValue()); // "."
+builder.padStart("^");
+console.log(builder.getValue()); // "^."
+builder.padEnd("^");
+console.log(builder.getValue()); // "^.^"
+builder.padBoth("=");
+console.log(builder.getValue()); // "=^.^="
