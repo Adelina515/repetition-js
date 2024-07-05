@@ -1,30 +1,30 @@
-class StringBuilder {
-  constructor(initialValue) {
-    this.initialValue = initialValue;
+class Car {
+  // Change code below this line
+  static MAX_PRICE = 50000;
+  #price;
+
+  constructor({ price }) {
+    this.#price = price;
   }
-  getValue() {
-    return this.initialValue;
+
+  get price() {
+    return this.#price;
   }
-  padEnd(str) {
-    console.log("str", str);
-    return (this.initialValue += str);
+
+  set price(newPrice) {
+    console.log("MAX_PRICE", this.MAX_PRICE);
+    if (newPrice <= Car.MAX_PRICE) {
+      this.#price = newPrice;
+    }
   }
-  padStart(str) {
-    console.log("str2", str);
-    return (this.initialValue = str + this.initialValue);
-  }
-  padBoth(str) {
-    console.log("str3", str);
-    return (this.initialValue = str + this.initialValue + str);
-  }
+  // Change code above this line
 }
 
-// Change code above this line
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // "."
-builder.padStart("^");
-console.log(builder.getValue()); // "^."
-builder.padEnd("^");
-console.log(builder.getValue()); // "^.^"
-builder.padBoth("=");
-console.log(builder.getValue()); // "=^.^="
+const audi = new Car({ price: 35000 });
+console.log(audi.price); // 35000
+
+audi.price = 49000;
+console.log(audi.price); // 49000
+
+audi.price = 51000;
+console.log(audi.price); // 49000
